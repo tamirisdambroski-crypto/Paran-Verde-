@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte, Futuro Sustentável</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f4f7f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* HERO SECTION (Banner com a sua imagem topo) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                        url('banner.png') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: #a8e6cf;
+            font-weight: 300;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .impact-phrase {
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 5px solid #2e7d32;
+            padding: 15px 25px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            border-radius: 4px;
+            backdrop-filter: blur(3px);
+        }
+
+        .impact-phrase p {
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        .btn-scroll {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .btn-scroll:hover {
+            background-color: #1b5e20;
+            transform: scale(1.05);
+        }
+
+        /* SEÇÕES DE CONTEÚDO */
+        .section-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .section-container.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-image {
+            flex: 1;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .section-text {
+            flex: 1;
+        }
+
+        .section-text h2 {
+            color: #2e7d32;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .section-text h2 i {
+            margin-right: 10px;
+        }
+
+        .section-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .section-text ul {
+            list-style: none;
+        }
+
+        .section-text ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+            font-size: 1.05rem;
+        }
+
+        .section-text ul li::before {
+            content: "➔";
+            position: absolute;
+            left: 0;
+            color: #2e7d32;
+        }
+
+        /* SEÇÃO FAEP */
+        .faep-section {
+            background-color: #e8f5e9;
+            padding: 80px 20px;
+        }
+
+        .faep-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .faep-content h2 {
+            color: #1b5e20;
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+
+        .faep-content .lead {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .faep-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .faep-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .faep-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .faep-card i {
+            font-size: 2.5rem;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .faep-card h3 {
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        /* SEÇÃO DO QUIZ */
+        .quiz-section {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .quiz-section h2 {
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .quiz-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .quiz-container {
+            display: none; /* Controlado via JS */
+        }
+
+        .quiz-container.active {
+            display: block;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .options-list {
+            list-style: none;
+        }
+
+        .option-item {
+            background: #f1f3f1;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            font-weight: 500;
+        }
+
+        .option-item:hover {
+            background: #e1e5e1;
+            transform: translateX(5px);
+        }
+
+        .option-item.correct {
+            background: #c8e6c9 !important;
+            color: #1b5e20;
+        }
+
+        .option-item.wrong {
+            background: #ffcdd2 !important;
+            color: #b71c1c;
+        }
+
+        .quiz-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-next {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
+        }
+
+        .btn-next:hover {
+            background: #1b5e20;
+        }
+
+        #result-container {
+            text-align: center;
+            display: none;
+        }
+
+        #result-container h3 {
+            font-size: 1.6rem;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .btn-restart {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        /* RESPONSIVIDADE PARA CELULAR */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content .subtitle { font-size: 1.2rem; }
+            .section-container, .section-container.reverse {
+                flex-direction: column;
+                margin: 40px auto;
+            }
+            .section-text h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Agro Forte, Futuro Sustentável</h1>
+            <p class="subtitle">Equilíbrio entre produção e meio ambiente</p>
+            <div class="impact-phrase">
+                <p>"Produzir com responsabilidade é garantir o futuro das próximas gerações."</p>
+            </div>
+            <a href="#agro" class="btn-scroll">Conhecer o Projeto</a>
+        </div>
+    </header>
+
+    <section id="agro" class="section-container">
+        <div class="section-image animate-me">
+            <img src="agro-parana.jpg" alt="Plantação e Agronegócio">
+        </div>
+        <div class="section-text">
+            <h2><i class="fas fa-tractor"></i> O que é o Agronegócio?</h2>
+            <p>O agronegócio é o motor que alimenta o mundo. Vai muito além do campo: envolve ciência, tecnologia e logística para garantir a segurança alimentar de bilhões de pessoas.</p>
+            <h3>O Orgulho do Paraná</h3>
+            <p>Nosso estado é referência nacional. Destacamos-nos pela alta produtividade de grãos (soja e milho), força na avicultura e suinocultura, além de um modelo de cooperativismo que une e fortalece o pequeno e o médio produtor.</p>
+        </div>
+    </section>
+
+    <section id="sustentabilidade" class="section-container reverse">
+        <div class="section-image animate-me">
+            <img src="sustentabilidade.jpg" alt="Sustentabilidade e Preservação">
+        </div>
+        <div class="section-text">
+            <h2><i class="fas fa-tree"></i> Sustentabilidade no Campo</h2>
+            <p>Produzir sem destruir é o nosso compromisso com o planeta. A agricultura moderna adota práticas rigorosas de conservação:</p>
+            <ul>
+                <li><strong>Preservação das Florestas:</strong> Respeito às Áreas de Preservação Permanente (APPs) e Reservas Legais.</li>
+                <li><strong>Uso Consciente da Água:</strong> Sistemas de irrigação inteligente e captação de água da chuva.</li>
+                <li><strong>Proteção do Solo:</strong> Uso do Plantio Direto para evitar a erosão e manter os nutrientes naturais.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="tecnologia" class="section-container">
+        <div class="section-image animate-me">
+            <img src="tecnologia.jpg" alt="Tecnologia no Campo">
+        </div>
+        <div class="section-text">
+            <h2><i class="fas fa-lightbulb"></i> Tecnologia e Inovação</h2>
+            <p>O campo hoje é 100% digital. A tecnologia otimiza recursos e diminui os impactos ambientais:</p>
+            <ul>
+                <li><strong>Drones na Agricultura:</strong> Mapeamento aéreo para identificar pragas e aplicar insumos apenas onde é necessário.</li>
+                <li><strong>Máquinas Modernas:</strong> Tratores e colheetadeiras guiados por GPS que evitam o desperdício.</li>
+                <li><strong>Agricultura de Precisão:</strong> Sensores que medem a umidade e a saúde do solo em tempo real.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="faep" class="faep-section">
+        <div class="faep-content">
+            <h2><i class="fas fa-landmark"></i> Sistema FAEP / SENAR-PR</h2>
+            <p class="lead">O suporte fundamental para o desenvolvimento e a capacitação do homem do campo.</p>
+            
+            <div class="faep-grid">
+                <div class="faep-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Defesa do Produtor</h3>
+                    <p>Representa os interesses políticos e econômicos dos produtores rurais do Paraná.</p>
+                </div>
+                <div class="faep-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Capacitação Gratuita</h3>
+                    <p>Cursos e treinamentos técnicos promovidos pelo SENAR para atualizar o trabalhador rural.</p>
+                </div>
+                <div class="faep-card">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Assistência e Gestão</h3>
+                    <p>Suporte em gestão de propriedades, adequação ambiental e novas tecnologias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="quiz-section">
+        <h2><i class="fas fa-gamepad"></i> Quiz Sustentável</h2>
+        <p class="quiz-subtitle">Teste os seus conhecimentos sobre o Agro e a Sustentabilidade!</p>
+
+        <div id="quiz-box">
+            <div class="quiz-container active" id="q1">
+                <p class="question">1. Qual prática ajuda a evitar a erosão e mantém os nutrientes do solo?</p>
+                <ul class="options-list">
+                    <li class="option-item" onclick="checkAnswer(this, false, 'q1')">Queimada controlada</li>
+                    <li class="option-item" onclick="checkAnswer(this, true, 'q1')">Plantio Direto (cobertura com palha)</li>
+                    <li class="option-item" onclick="checkAnswer(this, false, 'q1')">Desmatamento das margens de rios</li>
+                </ul>
+            </div>
+
+            <div class="quiz-container" id="q2">
+                <p class="question">2. Como os drones ajudam na sustentabilidade do agronegócio?</p>
+                <ul class="options-list">
+                    <li class="option-item" onclick="checkAnswer(this, true, 'q2')">Identificando pragas para aplicar insumos apenas onde é necessário</li>
+                    <li class="option-item" onclick="checkAnswer(this, false, 'q2')">Fazendo a colheita pesada dos grãos sozinhos</li>
+                    <li class="option-item" onclick="checkAnswer(this, false, 'q2')">Substituindo a necessidade de água na plantação</li>
+                </ul>
+            </div>
+
+            <div class="quiz-container" id="q3">
+                <p class="question">3. Qual é uma das principais funções do Sistema FAEP / SENAR-PR?</p>
+                <ul class="options-list">
+                    <li class="option-item" onclick="checkAnswer(this, false, 'q3')">Comprar toda a produção de grãos do estado</li>
+                    <li class="option-item" onclick="checkAnswer(this, false, 'q3')">Fabricar tratores e drones para vender mais barato</li>
+                    <li class="option-item" onclick="checkAnswer(this, true, 'q3')">Oferecer cursos e capacitação gratuita para os produtores rurais</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quiz-footer" id="quiz-footer-box">
+            <span id="progress-text">Pergunta 1 de 3</span>
+            <button class="btn-next" id="next-btn" onclick="nextQuestion()">Próxima</button>
+        </div>
+
+        <div id="result-container">
+            <h3><i class="fas fa-trophy"></i> Quiz Concluído!</h3>
+            <p id="score-text">Você acertou 0 de 3 perguntas.</p>
+            <button class="btn-restart" onclick="restartQuiz()">Jogar Novamente</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Agro Forte, Futuro Sustentável. Desenvolvido para o GitHub Pages.</p>
+    </footer>
+
+    <script type="text/javascript">
+        // --- CÓDIGO DO QUIZ ---
+        let currentStep = 1;
+        let score = 0;
+        let answered = false;
+
+        function checkAnswer(element, isCorrect, questionId) {
+            if (answered) return; // Evita clicar em mais de uma opção
+            
+            answered = true;
+            const options = document.querySelectorAll(`#${questionId} .option-item`);
+            
+            // Destaca as opções
+            options.forEach(opt => {
+                opt.style.cursor = "default";
+            });
+
+            if (isCorrect) {
+                element.classList.add('correct');
+                score++;
+            } else {
+                element.classList.add('wrong');
+                // Mostra qual era a certa
+                options.forEach(opt => {
+                    if(opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+
+            document.getElementById('next-btn').style.display = "block";
+        }
+
+        function nextQuestion() {
+            document.getElementById('next-btn').style.display = "none";
+            answered = false;
+            
+            if (currentStep < 3) {
+                document.getElementById(`q${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`q${currentStep}`).classList.add('active');
+                document.getElementById('progress-text').innerText = `Pergunta ${currentStep} de 3`;
+            } else {
+                // Fim do jogo
+                document.getElementById(`q${currentStep}`).classList.remove('active');
+                document.getElementById('quiz-footer-box').style.display = "none";
+                document.getElementById('result-container').style.display = "block";
+                document.getElementById('score-text').innerText = `Você acertou ${score} de 3 perguntas!`;
+            }
+        }
+
+        function restartQuiz() {
+            score = 0;
+            currentStep = 1;
+            answered = false;
+            
+            document.getElementById('result-container').style.display = "none";
+            document.getElementById('quiz-footer-box').style.display = "flex";
+            document.getElementById('progress-text').innerText = `Pergunta 1 de 3`;
+            
+            // Remove as cores antigas
+            const allOptions = document.querySelectorAll('.option-item');
+            allOptions.forEach(opt => {
+                opt.classList.remove('correct', 'wrong');
+                opt.style.cursor = "pointer";
+            });
+
+            document.getElementById('q1').classList.add('active');
+        }
+
+        // --- ANIMAÇÃO DE REVELAÇÃO DAS IMAGENS VIA SCROLL ---
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll(".animate-me");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            images.forEach(img => {
+                img.style.opacity = "0";
+                img.style.transform = "translateY(30px)";
+                img.style.transition = "all 0.8s ease-out";
+                observer.observe(img);
+            });
+        });
+    </script>
+</body>
+</html>
+
